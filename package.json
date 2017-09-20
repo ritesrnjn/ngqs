@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "QuickStart angular 2 with webpack, pug, scss.",
   "scripts": {
-    "start": "webpack-dev-server --content-base ./dist --open --port 7000 --public=0.0.0.0:7000",
-    "dev": "webpack-dev-server --content-base ./dist --port 7000 --public=0.0.0.0:7000",
+    "start": "webpack-dev-server --content-base ./dist --open --port 7000 --public=127.0.0.1:7000",
+    "dev": "webpack-dev-server --content-base ./dist --port 7000 --public=127.0.0.1:7000",
     "clean": "rimraf dist",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --colors"
   },
