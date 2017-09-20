@@ -1,0 +1,118 @@
+@import '../../../stylesheets/index';
+
+#mainNavHome {
+  border-color: rgba(34, 34, 34, 0.05);
+  background-color: white;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s; }
+#mainNavHome .navbar-brand {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #F05F40;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; }
+#mainNavHome .navbar-brand:focus, #mainNavHome .navbar-brand:hover {
+  color: #f05f40; }
+#mainNavHome .navbar-toggle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #222222; }
+#mainNavHome .navbar-nav > li.nav-item > a.nav-link:focus,
+#mainNavHome .navbar-nav > li.nav-item > a.nav-link {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #222222; }
+#mainNavHome .navbar-nav > li.nav-item > a.nav-link:focus:hover,
+#mainNavHome .navbar-nav > li.nav-item > a.nav-link:hover {
+  color: #F05F40; }
+#mainNavHome .navbar-nav > li.nav-item > a.nav-link:focus.active,
+#mainNavHome .navbar-nav > li.nav-item > a.nav-link.active {
+  color: #F05F40 !important;
+  background-color: transparent; }
+#mainNavHome .navbar-nav > li.nav-item > a.nav-link:focus.active:hover,
+#mainNavHome .navbar-nav > li.nav-item > a.nav-link.active:hover {
+  background-color: transparent; }
+@media (min-width: 992px) {
+  #mainNavHome {
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: transparent; }
+  #mainNavHome .navbar-brand {
+    color: rgba(255, 255, 255, 0.7); }
+  #mainNavHome .navbar-brand:focus, #mainNavHome .navbar-brand:hover {
+    color: white; }
+  #mainNavHome .navbar-nav > li.nav-item > a.nav-link,
+  #mainNavHome .navbar-nav > li.nav-item > a.nav-link:focus {
+    color: rgba(255, 255, 255, 0.7); }
+  #mainNavHome .navbar-nav > li.nav-item > a.nav-link:hover,
+  #mainNavHome .navbar-nav > li.nav-item > a.nav-link:focus:hover {
+    color: white; }
+  #mainNavHome.navbar-shrink {
+    border-color: rgba(34, 34, 34, 0.05);
+    background-color: white; }
+  #mainNavHome.navbar-shrink .navbar-brand {
+    font-size: 16px;
+    color: #F05F40; }
+  #mainNavHome.navbar-shrink .navbar-brand:focus, #mainNavHome.navbar-shrink .navbar-brand:hover {
+    color: #f05f40; }
+  #mainNavHome.navbar-shrink .navbar-nav > li.nav-item > a.nav-link,
+  #mainNavHome.navbar-shrink .navbar-nav > li.nav-item > a.nav-link:focus {
+    color: #222222; }
+  #mainNavHome.navbar-shrink .navbar-nav > li.nav-item > a.nav-link:hover,
+  #mainNavHome.navbar-shrink .navbar-nav > li.nav-item > a.nav-link:focus:hover {
+    color: #F05F40; } }
+
+.header.masthead {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  text-align: center;
+  color: white;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+.header.masthead .header-content {
+  position: relative;
+  width: 100%;
+  padding: 150px 15px 100px;
+  text-align: center; }
+.header.masthead .header-content .header-content-inner h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 0;
+  color: #ffffff;
+  margin-bottom: 0;
+  text-transform: uppercase; }
+.header.masthead .header-content .header-content-inner hr {
+  margin: 30px auto; }
+.header.masthead .header-content .header-content-inner p {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 50px;
+  color: rgba(255, 255, 255, 0.7); }
+@media (min-width: 768px) {
+  .header.masthead {
+    height: 100%;
+    min-height: 600px; }
+  .header.masthead .header-content {
+    position: absolute;
+    top: 50%;
+    padding: 0 50px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  .header.masthead .header-content .header-content-inner {
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto; }
+  .header.masthead .header-content .header-content-inner h1 {
+    font-size: 50px; }
+  .header.masthead .header-content .header-content-inner p {
+    font-size: 18px;
+    max-width: 80%;
+    margin-right: auto;
+    margin-left: auto; } }

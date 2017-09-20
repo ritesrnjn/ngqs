@@ -1,0 +1,28 @@
+nav#mainNavHome.navbar.navbar-expand-lg.navbar-light.fixed-top
+    .container
+      a.navbar-brand.js-scroll-trigger(routerLink='/') Start Angular
+      button.navbar-toggler.navbar-toggler-right(
+        type='button',
+        data-toggle='collapse',
+        data-target='#navbarResponsive',
+        aria-controls='navbarResponsive',
+        aria-expanded='false',
+        aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      .collapse.navbar-collapse#navbarResponsive
+        ul.navbar-nav.ml-auto
+          li.nav-item
+            a.nav-link.js-scroll-trigger(routerLink='/about') About
+          li.nav-item
+            a.nav-link.js-scroll-trigger(routerLink='/services') Services
+          li.nav-item
+            a.nav-link.js-scroll-trigger(routerLink='/portfolio') Portfolio
+          li.nav-item
+            a.nav-link.js-scroll-trigger(routerLink='/contact') Contact
+.header.masthead(style='background-image: url(img/header.jpg)')
+  .header-content
+    .header-content-inner
+      h1#homeHeading QUICK START ANGULARJS 2+ APPLICATION
+      hr
+      p AngularJS can help you build better websites using the Bootstrap CSS framework! Just download the template and start going, no strings attached!
+      a.btn.btn-primary.btn-xl.page-scroll(routerLink="/contact") Contact us
