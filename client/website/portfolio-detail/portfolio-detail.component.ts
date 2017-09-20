@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { keyBy } from 'lodash';
 
 @Component({
-  selector: 'portfolio',
-  styleUrls: ['portfolio.scss'],
-  templateUrl: 'portfolio.pug'
+  selector: 'portfolio-detail',
+  styleUrls: ['portfolio-detail.scss'],
+  templateUrl: 'portfolio-detail.pug'
 })
 
-export class PortfolioComponent {
+export class PortfolioDetailComponent {
 
+  private imgUrl: string;
   private projects = [
     {
       "id": 1,
@@ -58,5 +61,20 @@ export class PortfolioComponent {
       "fullImage": "img/portfolio/fullsize/6.jpg",
     }
   ];
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ){
+    this.route.params.subscribe((data: any) => {
+      const projectUrlMap = keyBy(this.projects, 'url');
+      if(projectUrlMap[data.id]){
+        this.imgUrl = projectUrlMap[data.id].fullImage;
+      } else {
+        this.router.navigateByUrl('/404');
+      }
+    });
+  }
+
 
 }

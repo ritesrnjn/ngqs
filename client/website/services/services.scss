@@ -1,0 +1,22 @@
+@import "../../stylesheets/index";
+
+// Styling for the services section
+.service-box {
+  max-width: 400px;
+  margin: 50px auto 0;
+  @media (min-width: 992px) {
+    margin: 20px auto 0;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+
+
+// Styling for the call to action section
+.call-to-action {
+  padding: 50px 0;
+  h2 {
+    margin: 0 auto 20px;
+  }
+}
