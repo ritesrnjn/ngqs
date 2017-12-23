@@ -9,7 +9,7 @@ import { AboutComponent }           from './about/about.component';
 import { ServicesComponent }        from './services/services.component';
 import { PortfolioComponent }       from './portfolio/portfolio.component';
 import { PortfolioDetailComponent } from './portfolio-detail/portfolio-detail.component';
-import { LoginComponent }         from './login/login.component';
+import { ContactComponent }         from './contact/contact.component';
 
 // Shared
 import { HeaderComponent } from './header/header.component';
@@ -97,7 +97,7 @@ export const routes: Routes = [{
           }]
       },
       {
-        path: 'login',
+        path: 'contact',
         children: [
           {
             path: '',
@@ -105,7 +105,7 @@ export const routes: Routes = [{
             outlet: 'Header',
           }, {
             path: '',
-            component: LoginComponent
+            component: ContactComponent
           }, {
             path: '',
             component: FooterComponent,
