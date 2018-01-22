@@ -5,9 +5,8 @@ import '@angular/core';
 import '@angular/common';
 import '@angular/http';
 import '@angular/router';
-// RxJS
+
+// Others
 import 'rxjs';
 import 'jquery';
 import 'html5shiv';
-
-// import 'respond.js/dest/respond.min.js';
