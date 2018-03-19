@@ -6,14 +6,11 @@ import { FormsModule }            from '@angular/forms';
 //COMPONENTS
 import { NotFoundComponent }  from './components/not-found/not-found.component';
 
-import { AlertModule } from 'ngx-bootstrap';
-
 @NgModule({
   imports: [
     FormsModule,
     CommonModule,
-    RouterModule,
-    AlertModule.forRoot()
+    RouterModule
   ],
   declarations: [
     NotFoundComponent
