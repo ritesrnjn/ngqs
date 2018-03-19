@@ -17,7 +17,7 @@ To reduce the development efforts following technologies have been used to scaff
 * Typescript 2
 * Sass
 * Pug
-* Webpack 3
+* Webpack 4
 * Bootstrap 4
 
 ## Requirements
@@ -57,6 +57,7 @@ While developing, you will probably rely mostly on `yarn start`; however, there 
 |`clean`            |Deletes precompiled application folder|
 |`lint`             |Lints the project for potential errors|
 |`lint:fix`         |Lints the project and fixes all correctable errors|
+|`outdated`         |Lists outdated packages|
 
 ## Project Structure
 

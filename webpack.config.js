@@ -5,13 +5,14 @@ const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const project = require('./project.config')
 const isProd = project.env === 'production'
 const inProject = path.resolve.bind(path, project.basePath)
 const inProjectSrc = (file) => inProject(project.srcDir, file)
 
 let config = {
+  mode: project.env === 'production' ? 'production' : 'development',
   entry: {
     vendor: [
       inProjectSrc('polyfills'),
@@ -22,7 +23,7 @@ let config = {
     ]
   },
   output: {
-    filename: 'bundle.js',
+    filename: "[name].js",
     path: path.resolve(__dirname, 'dist')
   },
   devServer: {
@@ -76,7 +77,13 @@ let config = {
       }
     ]
   },
-  // PLUGINS
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: { test: /[\\/]node_modules[\\/]/, name: "vendors", chunks: "all" }
+      }
+    }
+  },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
 
@@ -91,13 +98,6 @@ let config = {
       /angular(\\|\/)core(\\|\/)esm5/,
       path.resolve(__dirname, './client')
     ),
-
-    // ADD VENDOR MODULES TO SEPARATE FILE
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity,
-      filename: 'commons.js'
-    }),
 
     // Copy assets from the public folder
     new CopyWebpackPlugin([
@@ -125,14 +125,13 @@ let config = {
 if (isProd) {
   console.log('SERVING PRODUCTION BUILD')
   config.devtool = 'cheap-module-source-map'
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      comments: false,
-      compress: true,
-      mangle: false,
+  config.optimization.minimizer = [
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
       sourceMap: true
     })
-  )
+  ]
 } else {
   console.log('SERVING DEVELOPMENT BUILD ')
   config.devtool = 'inline-source-map'
