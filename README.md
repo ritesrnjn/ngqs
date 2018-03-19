@@ -5,10 +5,10 @@ This repository holds AngularJS 2 boilerplate for building fast, robust, and ada
 ## Table of Contents
 1. [Technologies](#technologies)
 1. [Requirements](#requirements)
-1. [Installation](#getting-started)
+1. [Getting Started](#getting-started)
 1. [Running the Project](#running-the-project)
 1. [Project Structure](#project-structure)
-1. [Testing](#testing)
+1. [Author](#author)
 
 
 ## Technologies
@@ -27,9 +27,9 @@ To reduce the development efforts following technologies have been used to scaff
 * [yarn](https://yarnpkg.com/en/) `^0.23.0` or [npm](https://www.npmjs.com/) `^5.0.0`
 
 
-### Installation
+## Getting Started
 
-Clone this repo into new project folder (e.g., `my-proj`).
+Clone this repo.
 ```bash
 git clone  https://github.com/ritesrnjn/ngqs
 cd ngqs
@@ -55,13 +55,8 @@ While developing, you will probably rely mostly on `yarn start`; however, there 
 |`start`            |Serves app at `localhost:3000`|
 |`build`            |Builds the application to ./dist|
 |`clean`            |Deletes precompiled application folder|
-|`analyze`          |Runs webpack bundle analyser|
-|`test`             |Runs unit tests with Jest|
-|`test:watch`       |Runs `test` in watch mode to re-run tests when changed|
-|`test:coverage`    |Runs `test` and shows summary|
 |`lint`             |Lints the project for potential errors|
 |`lint:fix`         |Lints the project and fixes all correctable errors|
-|`check`            |Checks installed node packages for updates
 
 ## Project Structure
 
@@ -70,45 +65,31 @@ It aims to represent generally accepted guidelines and patterns for building sca
 
 ```
 .
-├── build                    # All build-related code
-├── public                   # Static public assets (not imported anywhere in source code)
-├── server                   # Express application that provides webpack middleware
-│   └── main.js              # Server application entry point
-├── client                   # Application source code
-│   ├── index.html           # Main HTML page container for app
-│   ├── main.js              # Application bootstrap and rendering
-│   ├── normalize.js         # Browser normalization and polyfills
-│   ├── components           # Global Reusable Components
-│   ├── containers           # Global Reusable Container Components
-│   ├── layouts              # Components that dictate major page structure
-│   │   └── PageLayout       # Global application layout in which to render routes
-│   ├── pages                # Main route definitions and async split points
-│   │   ├── index.js         # Bootstrap main application routes with store
-│   │   ├── AppReg           # Fractal route
-│   │   │   ├── index.js     # Route definitions and async split points
-│   │   │   ├── assets       # Assets required to render components
-│   │   │   ├── components   # Presentational React Components
-│   │   │   └── routes **    # Fractal sub-routes (** optional)
-│   │   └── Help             # Fractal route
-│   │       ├── index.js     # Counter route definition
-│   │       ├── container    # Connect components to actions and store
-│   │       ├── modules      # Collections of reducers/constants/actions
-│   │       └── routes **    # Fractal sub-routes (** optional)
-│   ├── store                # Redux-specific pieces
-│   │   ├── createStore.js   # Create and instrument redux store
-│   │   └── reducers.js      # Reducer registry and injection
-│   └── styles               # Application-wide styles (generally settings)
-│ 
-├── server                   # Express Server
-│   ├── __tests__            # Unit tests
-│   ├── mocks                # Mock JSON files
-│   ├── models               # logic for modifying API response 
-│   ├── routes               # All middleware routes
-│   ├── utils                # Utility files
-│   ├── views                # Pug templates
-│   └── main.js              # Global Reusable Container Components
-│ 
-└── tests                    # Unit tests
+├── public                          # Static public assets
+├── client                          # Application source code
+│   ├── index.html                  # Main HTML page container for app
+│   ├── main.js                     # Application bootstrap and rendering
+│   ├── polyfills.js                # Browser normalization and polyfills
+│   ├── vendor.js                   # External libraries
+│   ├── app                         # Application module
+│   │   ├── app.module.ts           # App module definition
+│   │   ├── app-routing.ts          # Fractal route
+│   │   ├── app.component.ts        # App module components
+│   │   └── app.scss                # App module styles (applied globally)
+│   ├── services                    # Services definition
+│   ├── shared                      # Shared components
+│   ├── website                     # Website module
+│   │   ├── website.module.ts       # Website module definition
+│   │   ├── website-routing.ts      # Fractal sub-routes
+│   │   ├── website.component.ts    # Website component definition
+│   │   ├── website.pug             # Website component template
+│   │   ├── website.scss            # Website component styles
+│   │   └── About                   # About component
+│   │       ├── about.component.ts  # About component definition
+│   │       ├── about.pug           # About component template
+│   │       └── about.scss          # About component styles
+│   └── stylesheets                 # Application-wide styles (generally settings)
+└── webpack.config.js               # Webpack configuration
 ```
 
 ## Author
