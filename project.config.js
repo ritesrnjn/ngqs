@@ -1,36 +1,25 @@
-const NODE_ENV = process.env.NODE_ENV || 'development'
+const path = require('path')
+const NODE_ENV = process.env.NODE_ENV || 'dev'
 const NODE_ANALYZE = process.env.NODE_ANALYZE || false
 
 module.exports = {
-  /** The environment to use when building the project */
-  env: NODE_ENV,
-  /** analyse */
-  analyze: NODE_ANALYZE,
-  /** The full path to the project's root directory */
-  basePath: __dirname,
-  /** The name of the directory containing the application source code */
-  srcDir: 'client',
-  /** The file name of the application's entry point */
-  main: 'main',
-  /** The name of the directory in which to emit compiled assets */
-  outDir: 'dist',
-  /** The base path for all projects assets (relative to the website root) */
-  publicPath: '/',
-  /** Whether to generate sourcemaps */
-  sourcemaps: true,
-  /** A hash map of keys that the compiler should treat as external to the project */
-  externals: {},
-  /** A hash map of variables and their values to expose globally */
-  globals: {},
-  /** Whether to enable verbose logging */
-  verbose: false,
-  /** The list of modules to bundle separately from the core application code */
-  vendors: [
-    'react',
-    'react-dom',
-    'redux',
-    'react-redux',
-    'redux-thunk',
-    'react-router'
-  ]
+  env: NODE_ENV,  /** The environment to use when building the project */
+
+  analyze: NODE_ANALYZE, /** Run bundle analyser */
+
+  main: 'main',  /** The file name of the application's entry point */
+
+  sourcemaps: true,  /** Whether to generate sourcemaps */
+
+  basePath: __dirname,  /** The full path to the project's root directory */
+
+  srcDir: 'client', /** Directory name containing the application source code */
+
+  srcPath: path.normalize(__dirname + '/client'),  /** Directory path containing the application source code */
+
+  outDir: 'dist', /** Directory name in which to emit compiled assets */
+
+  outPath: path.normalize(__dirname + '/dist'),  /** Directory path in which to emit compiled assets */
+
+  publicPath: path.normalize(__dirname + 'public')  /** The base path for all projects assets */
 }

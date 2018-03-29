@@ -24,7 +24,7 @@ let config = {
   },
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, 'dist')
+    path: project.outPath
   },
   devServer: {
     noInfo: true,
@@ -96,7 +96,7 @@ let config = {
 
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)esm5/,
-      path.resolve(__dirname, './client')
+      project.srcPath
     ),
 
     // Copy assets from the public folder
