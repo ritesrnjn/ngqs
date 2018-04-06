@@ -1,9 +1,7 @@
-
-import { Observable } from 'rxjs/Rx';
-import { HttpService } from './http.service';
-import { Injectable } from '@angular/core';
-import { ConfigService } from './config.service';
-import { NgSpinningPreloader } from 'ng2-spinning-preloader';
+import {Observable} from 'rxjs/Rx';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {NgSpinningPreloader} from 'ng2-spinning-preloader';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -12,30 +10,31 @@ import 'rxjs/add/operator/catch';
 export class DataService {
   private baseURL: string;
   static counter: number = 0;
+  private options = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
 
-  constructor(
-    private http : HttpService,
-    private configService: ConfigService,
-    private ngSpinningPreloader: NgSpinningPreloader
-  ){
-    //this.baseURL = this.configService.getConfig('baseURL');
-    this.baseURL = "https://google.com/"
+  constructor(private http: HttpClient,
+              private ngSpinningPreloader: NgSpinningPreloader) {
+    const token = localStorage.getItem('token');
+    if (token) this.options.headers['Authorization'] = `Bearer ${token}`
   }
 
   get(url) {
     this.ngSpinningPreloader.start();
     DataService.counter += 1;
-    let getURL = this.baseURL+ url;
     let observable = new Observable(observer => {
-      this.http.get(getURL).subscribe((data: any) => {
-          let response = JSON.parse(data._body);
+      this.http.get(url, this.options).subscribe(res => {
+          console.log('res', res)
           DataService.counter -= 1;
-          if(DataService.counter === 0) {
+          if (DataService.counter === 0) {
             this.ngSpinningPreloader.stop();
           }
-          observer.next(response);
+          observer.next(res);
         },
-        (e) =>{
+        (e) => {
           DataService.counter -= 1;
           this.ngSpinningPreloader.stop();
           DataService.handleError(e);
@@ -44,20 +43,19 @@ export class DataService {
     return observable;
   }
 
-  post(url,data){
+  post(url, data) {
     this.ngSpinningPreloader.start();
     DataService.counter += 1;
-    let postURL = this.baseURL+ url;
     let observable = new Observable(observer => {
-      this.http.post(postURL,data).subscribe((data: any) => {
-          let response = JSON.parse(data._body);
+      this.http.post(url, data, this.options).subscribe(res => {
+        console.log('res', res)
           DataService.counter -= 1;
-          if(DataService.counter === 0) {
+          if (DataService.counter === 0) {
             this.ngSpinningPreloader.stop();
           }
-          observer.next(response);
+          observer.next(res);
         },
-        (e) =>{
+        (e) => {
           DataService.counter -= 1;
           this.ngSpinningPreloader.stop();
           DataService.handleError(e);
@@ -66,20 +64,18 @@ export class DataService {
     return observable;
   }
 
-  update(url,data){
+  update(url, data) {
     this.ngSpinningPreloader.start();
     DataService.counter += 1;
-    let putURL = this.baseURL+ url;
     let observable = new Observable(observer => {
-      this.http.put(putURL,data).subscribe((data: any) => {
-          let response = JSON.parse(data._body);
+      this.http.put(url, data, this.options).subscribe(res => {
           DataService.counter -= 1;
-          if(DataService.counter === 0) {
+          if (DataService.counter === 0) {
             this.ngSpinningPreloader.stop();
           }
-          observer.next(response);
+          observer.next(res);
         },
-        (e) =>{
+        (e) => {
           DataService.counter -= 1;
           this.ngSpinningPreloader.stop();
           DataService.handleError(e);
@@ -88,20 +84,18 @@ export class DataService {
     return observable;
   }
 
-  delete(url){
+  delete(url) {
     this.ngSpinningPreloader.start();
     DataService.counter += 1;
-    let deleteURL = this.baseURL+ url;
     let observable = new Observable(observer => {
-      this.http.delete(deleteURL).subscribe((data: any) => {
-          let response = JSON.parse(data._body);
+      this.http.delete(url, this.options).subscribe(res => {
           DataService.counter -= 1;
-          if(DataService.counter === 0) {
+          if (DataService.counter === 0) {
             this.ngSpinningPreloader.stop();
           }
-          observer.next(response);
+          observer.next(res);
         },
-        (e) =>{
+        (e) => {
           DataService.counter -= 1;
           this.ngSpinningPreloader.stop();
           DataService.handleError(e);
@@ -110,7 +104,7 @@ export class DataService {
     return observable;
   }
 
-  static handleError(error: any){
+  static handleError(error: any) {
     return Observable.throw(error.json().error || 'Server error');
   }
 

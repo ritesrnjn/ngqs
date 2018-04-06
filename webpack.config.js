@@ -69,7 +69,7 @@ let config = {
       {
         test: /\.ts$/,
         use: [
-          'awesome-typescript-loader',
+          'ts-loader',
           'angular2-template-loader',
           '@angularclass/hmr-loader',
           'angular2-router-loader'
