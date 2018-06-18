@@ -56,15 +56,13 @@ let config = {
         loader: 'pug-html-loader'
       },
       {
-        test: /\.css$/,
-        loader: 'css-loader'
-      },
-      {
-        test: /\.scss$/,
-        use: [
+        // SASS
+        test: /\.(css|scss)$/,
+        loaders: [
+          'to-string-loader',
           'raw-loader',
-          'sass-loader'
-        ]
+          'sass-loader?sourceMap'
+        ],
       },
       {
         test: /\.ts$/,

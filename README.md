@@ -1,6 +1,6 @@
 # Angular QuickStart
 
-This repository holds AngularJS 2 boilerplate for building fast, robust, and adaptable web apps or sites
+This repository holds Angular boilerplate for building fast, robust, and adaptable web apps or sites.
 
 ## Table of Contents
 1. [Technologies](#technologies)
@@ -14,6 +14,7 @@ This repository holds AngularJS 2 boilerplate for building fast, robust, and ada
 ## Technologies
 
 To reduce the development efforts following technologies have been used to scaffolding the application
+* Angular 6
 * Typescript 2
 * Sass
 * Pug
