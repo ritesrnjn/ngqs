@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 
 @Injectable()
@@ -8,7 +8,7 @@ export class ConfigService {
   private config: Object = null;
 
   constructor(
-    private http: Http
+    private http: HttpClient
   ) {}
 
   /**

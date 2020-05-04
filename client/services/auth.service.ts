@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
 
@@ -16,7 +16,7 @@ export class AuthService {
   newOrderEventAsObservable = this.newOrderEvent.asObservable();
 
   constructor(
-    private http: Http,
+    private http: HttpClient,
     private config : ConfigService,
     private ngSpinningPreloader : NgSpinningPreloader) {
     this.ngSpinningPreloader.stop();
@@ -24,18 +24,15 @@ export class AuthService {
   login(user) {
     let urls = this.config.getConfig('urls');
     let loginUrl: string = urls.signin;
-    return this.http.post(loginUrl,user)
-      .catch(this.handleError)
-      .map((response: Response) => {
-        // login successful if there's a jwt token in the response
-        let responseObject = response.json();
-        if (responseObject && responseObject.user) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('token', responseObject.jwt);
-          localStorage.setItem('currentUser', JSON.stringify(responseObject.user));
-        }
-        return responseObject;
-      });
+    return this.http.post(loginUrl,user).subscribe((res:any)=>{
+      res = res.json();
+      if (res && res.user) {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('token', res.jwt);
+        localStorage.setItem('currentUser', JSON.stringify(res.user));
+      }
+      return res;
+    })
   }
 
   // remove user from local storage to log user out
@@ -50,7 +47,7 @@ export class AuthService {
     let sendSubUrl: string = this.baseURL + urls.sendSubUrl;
     return this.http.post(sendSubUrl,subInfo)
       .catch(this.handleError)
-      .map((response: Response) => {
+      .map((response: HttpResponse<any>) => {
         console.log('subscription info sent successfully. Response from sendSub '+response);
       });
   }
