@@ -14,8 +14,8 @@ This repository holds Angular boilerplate for building fast, robust, and adaptab
 ## Technologies
 
 To reduce the development efforts following technologies have been used to scaffolding the application
-* Angular 6
-* Typescript 2
+* Angular 9
+* Typescript 3
 * Sass
 * Pug
 * Webpack 4
@@ -24,7 +24,7 @@ To reduce the development efforts following technologies have been used to scaff
 ## Requirements
 
 * [git](https://git-scm.com/)
-* [node.js](https://nodejs.org/)  `^5.0.0`
+* [node.js](https://nodejs.org/)  `^12.0.0`
 * [yarn](https://yarnpkg.com/en/) `^0.23.0` or [npm](https://www.npmjs.com/) `^5.0.0`
 
 
@@ -96,7 +96,4 @@ It aims to represent generally accepted guidelines and patterns for building sca
 
 ## Author
 [Ritesh Ranjan](https://ritesrnjn.github.io)
-
-## Setup Issues?
--  Node Sass does not yet support your current environment: ---> npm rebuild node-sass
 

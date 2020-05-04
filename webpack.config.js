@@ -1,6 +1,5 @@
 'use strict'
 // CONSTANTS
-
 const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -58,10 +57,11 @@ let config = {
       {
         // SASS
         test: /\.(css|scss)$/,
-        loaders: [
+        use: [
           'to-string-loader',
-          'raw-loader',
-          'sass-loader?sourceMap'
+          "style-loader", // creates style nodes from JS strings
+          "css-loader", // translates CSS into CommonJS
+          "sass-loader" // translates SCSS into CommonJS
         ],
       },
       {
@@ -131,7 +131,7 @@ if (isProd) {
     })
   ]
 } else {
-  console.log('SERVING DEVELOPMENT BUILD ')
+  console.log('STARTING DEVELOPMENT SERVER')
   config.devtool = 'inline-source-map'
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
