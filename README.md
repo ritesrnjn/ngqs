@@ -62,7 +62,7 @@ While developing, you will probably rely mostly on `yarn start`; however, there 
 
 ## Project Structure
 
-The project structure used here is **fractal**, where functionality is grouped primarily by feature rather than file type. 
+The project structure used here is **fractal**, where functionality is grouped primarily by feature rather than file type.
 It aims to represent generally accepted guidelines and patterns for building scalable applications.
 
 ```
@@ -96,4 +96,7 @@ It aims to represent generally accepted guidelines and patterns for building sca
 
 ## Author
 [Ritesh Ranjan](https://ritesrnjn.github.io)
+
+## Setup Issues?
+-  Node Sass does not yet support your current environment: ---> npm rebuild node-sass
 
