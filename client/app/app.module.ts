@@ -17,14 +17,15 @@ import {AuthService}    from '../services/auth.service';
 //Dashboard
 import {ScriptLoaderService} from "../services/script-loader.service";
 import {GlobalErrorHandler} from "../services/error-handler.service";
-import {NgSpinningPreloader} from 'ng2-spinning-preloader';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    NgxLoadingModule.forRoot({})
   ],
   declarations: [
     AppComponent
@@ -33,7 +34,6 @@ import {NgSpinningPreloader} from 'ng2-spinning-preloader';
     DataService,
     ConfigService,
     AuthService,
-    NgSpinningPreloader,
     ScriptLoaderService,
     GlobalErrorHandler
   ],

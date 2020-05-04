@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { NgSpinningPreloader } from 'ng2-spinning-preloader';
 import { ScriptLoaderService } from '../services/script-loader.service';
 
 @Component({
@@ -11,9 +10,9 @@ import { ScriptLoaderService } from '../services/script-loader.service';
 })
 
 export class AppComponent  {
+  public loading = false;
   constructor(
     private router: Router,
-    private ngSpinningPreloader: NgSpinningPreloader,
     private _script: ScriptLoaderService
   ){}
 
@@ -23,7 +22,7 @@ export class AppComponent  {
         return;
       }
       window.scrollTo(0,0);
-      this.ngSpinningPreloader.stop();
+      this.loading = false;
     });
   }
 

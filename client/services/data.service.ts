@@ -1,7 +1,6 @@
 import {Observable} from 'rxjs/Rx';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {NgSpinningPreloader} from 'ng2-spinning-preloader';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -15,28 +14,28 @@ export class DataService {
       'Content-Type': 'application/json'
     }
   }
+  public loading = false;
 
-  constructor(private http: HttpClient,
-              private ngSpinningPreloader: NgSpinningPreloader) {
+  constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');
     if (token) this.options.headers['Authorization'] = `Bearer ${token}`
   }
 
   get(url) {
-    this.ngSpinningPreloader.start();
+    this.loading = true;
     DataService.counter += 1;
     let observable = new Observable(observer => {
       this.http.get(url, this.options).subscribe(res => {
           console.log('res', res)
           DataService.counter -= 1;
           if (DataService.counter === 0) {
-            this.ngSpinningPreloader.stop();
+            this.loading = false;
           }
           observer.next(res);
         },
         (e) => {
           DataService.counter -= 1;
-          this.ngSpinningPreloader.stop();
+          this.loading = false;
           DataService.handleError(e);
         });
     });
@@ -44,20 +43,20 @@ export class DataService {
   }
 
   post(url, data) {
-    this.ngSpinningPreloader.start();
+    this.loading = true;
     DataService.counter += 1;
     let observable = new Observable(observer => {
       this.http.post(url, data, this.options).subscribe(res => {
         console.log('res', res)
           DataService.counter -= 1;
           if (DataService.counter === 0) {
-            this.ngSpinningPreloader.stop();
+            this.loading = false;
           }
           observer.next(res);
         },
         (e) => {
           DataService.counter -= 1;
-          this.ngSpinningPreloader.stop();
+          this.loading = false;
           DataService.handleError(e);
         })
     });
@@ -65,19 +64,19 @@ export class DataService {
   }
 
   update(url, data) {
-    this.ngSpinningPreloader.start();
+    this.loading = true;
     DataService.counter += 1;
     let observable = new Observable(observer => {
       this.http.put(url, data, this.options).subscribe(res => {
           DataService.counter -= 1;
           if (DataService.counter === 0) {
-            this.ngSpinningPreloader.stop();
+            this.loading = false;
           }
           observer.next(res);
         },
         (e) => {
           DataService.counter -= 1;
-          this.ngSpinningPreloader.stop();
+          this.loading = false;
           DataService.handleError(e);
         });
     });
@@ -85,19 +84,19 @@ export class DataService {
   }
 
   delete(url) {
-    this.ngSpinningPreloader.start();
+    this.loading = true;
     DataService.counter += 1;
     let observable = new Observable(observer => {
       this.http.delete(url, this.options).subscribe(res => {
           DataService.counter -= 1;
           if (DataService.counter === 0) {
-            this.ngSpinningPreloader.stop();
+            this.loading = false;
           }
           observer.next(res);
         },
         (e) => {
           DataService.counter -= 1;
-          this.ngSpinningPreloader.stop();
+          this.loading = false;
           DataService.handleError(e);
         });
     });

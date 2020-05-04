@@ -5,7 +5,6 @@ import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
 
 import 'rxjs/add/operator/map'
 import { ConfigService } from './config.service';
-import { NgSpinningPreloader } from 'ng2-spinning-preloader';
 
 
 @Injectable()
@@ -15,11 +14,11 @@ export class AuthService {
   private newOrderEvent = new BehaviorSubject<Object>(this.messageEvent);
   newOrderEventAsObservable = this.newOrderEvent.asObservable();
 
+  public loading = false;
   constructor(
     private http: HttpClient,
-    private config : ConfigService,
-    private ngSpinningPreloader : NgSpinningPreloader) {
-    this.ngSpinningPreloader.stop();
+    private config : ConfigService) {
+    this.loading = false;
   }
   login(user) {
     let urls = this.config.getConfig('urls');
