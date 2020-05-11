@@ -1,6 +1,7 @@
 # Angular QuickStart
 
-This repository holds Angular boilerplate for building fast, robust, and adaptable web apps or sites.
+This repository can be referred to understand the compilation steps of an Angular application.
+Do not use this setup for production apps.
 
 ## Table of Contents
 1. [Technologies](#technologies)
@@ -13,7 +14,7 @@ This repository holds Angular boilerplate for building fast, robust, and adaptab
 
 ## Technologies
 
-To reduce the development efforts following technologies have been used to scaffolding the application
+Following technologies have been used for scaffolding the application
 * Angular 9
 * Typescript 3
 * Sass
